@@ -1,0 +1,109 @@
+Mapeamento de Entidades
+
+= Ônibus
+	+ PlacaÔnibus
+	+ CódigoTipoÔnibus
+
+= Tipo_Ônibus
+	+ CódigoTipoÔnibus
+	+ Descrição
+	+ LotaçãoMáxima
+	+ NúmeroAcentos
+
+= Tipo_Cartão
+	+ CódigoTipoCartão
+	+ Tipo (pessoal, avulso)
+
+= Tipo_Passagem
+	+ CódigoTipoPassagem
+	+ Descrição (meia, inteira, gratuidade)
+
+= Cartão_Passagem
+	+ CódigoCartãoPassagem
+	+ CódigoPassageiro
+	+ CódigoTipoCartão
+	+ CódigoTipoPassagem
+	+ QuantidadeDinheiro
+	+ DthValidade
+	
+= Passageiro
+	+ CPF
+	+ CódigoIdentificador
+	+ Nome 
+	+ Foto
+	+ Digital
+
+= Viagem
+	+ CódigoViagem
+	+ CódigoTipoViagem
+	+ PlacaÔnibus
+	+ CódigoPassageiro
+	+ HorárioInício
+	+ Origem
+	+ Destino
+
+= Tipo_Viagem 
+	+ CódigoTipoViagem
+	+ Descrição (turismo ou comum)
+
+= Viagem_Funcionario (n:n)
+	+ CódigoViagem
+	+ CódigoFuncionário
+	
+= Escala
+	+ CódigoEscala
+	+ CódigoTurno
+	+ HorárioInício
+	+ HorárioFim
+
+= Turno
+	+ CódigoTurno
+	+ Descrição
+
+Funcionário_Função
+	+ Matrícula
+	+ CódigoFunção
+
+= Funcionário
+	+ Matrícula
+	+ Nome
+	+ CódigoFunção
+	+ CódigoEscala
+
+= Função
+	+ CódigoFunção
+	+ Descrição
+
+= Frota (n:n)
+	+ CódigoÔnibus
+	+ CódigoConsórcio
+	
+= Linha
+	+ CódigoLinha
+	+ CódigoItinerário
+
+= Itinerário
+	+ CódigoItinerário
+	+ Descrição
+	
+= Concessionária
+	+ CódigoConcessionária
+	+ Nome
+	+ FrotaDisponível
+	
+= Consórcio (n:n)
+	+ CódigoConsórcio
+	+ CódigoConcessionária
+	+ CódigoÁreaOperacional
+	+ CódigoLinha
+	
+= Área_Operacional
+	+ CódigoÁreaOperacional
+	+ Nome
+	+ Cor
+	+ CódigoRegião
+
+= Região
+	+ CódigoRegião
+	+ Descrição
+	 

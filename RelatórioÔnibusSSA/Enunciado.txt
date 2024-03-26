@@ -1,0 +1,5 @@
+Modelar o esquema relacional de dados, do sistema do transporte público de ssa, e a partir desse esquema definir uma visão materializada que forneça como informação de quanto cada linha arrecadou por dia e quantos passageiros cada linha teve por dia.
+Bolar uma apresentação formal escrita que descreve a situação
+O que tem que ser entregue é o modelo lógico (aquele que é feito dps que as tabelas e relacionamentos são construídos)
+e o script de criação da view
+o relatório de qtd passageiro e total de dinheiro pra data e pra linha
