@@ -9,7 +9,7 @@ public class DataBase {
         return dataBaseName;
     }
 
-    public DbItem getItemFromDataBase(String itemName){
-        return new Item(itemName);
+    public DbItem getItemFromDataBase(String itemColumn, long line, String itemName ){
+        return new Item(itemColumn, line, itemName);
     }
 }

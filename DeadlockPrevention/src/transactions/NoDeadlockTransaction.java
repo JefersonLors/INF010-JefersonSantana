@@ -4,58 +4,72 @@ import database.DbItem;
 
 import java.time.LocalDateTime;
 
-public class NoDeadlockTransaction extends Thread{
-    private DbItem mainDbItem;
-    private DbItem secondaryDbItem;
-    private long transactionNumber;
-    public NoDeadlockTransaction(long transactionNumber, DbItem mainDbItem, DbItem secondayDbItem){
+public class NoDeadlockTransaction extends Transaction {
+    private final long transactionId;
+    public NoDeadlockTransaction(DbItem mainDbItem, DbItem secondayDbItem){
         this.mainDbItem = mainDbItem;
         this.secondaryDbItem = secondayDbItem;
-        this.transactionNumber = transactionNumber;
+        transactionId = ++Transaction.id;
     }
     public void run() {
         try {
-            System.out.println("\t -> Transaction " + this.transactionNumber + " initialized (" + LocalDateTime.now() + ")");
-            System.out.println("\t\t > [T" + this.transactionNumber + "] checking item availability...");
+            System.out.println("\t -> Transaction " + this.transactionId+ " initialized (" + LocalDateTime.now() + ")");
+            System.out.println("\t\t > [T" + this.transactionId + "] checking items availability...");
 
             if (!mainDbItem.isLocked() && !secondaryDbItem.isLocked()) {
-                System.out.println("\t\t > [T" + this.transactionNumber + "] items available.");
+                System.out.println("\t\t > [T" + this.transactionId + "] " + this.mainDbItem.getPosition() + " is available.");
+                System.out.println("\t\t > [T" + this.transactionId + "] " + this.secondaryDbItem.getPosition() + " is available.");
 
-                System.out.println("\t\t > [T" + this.transactionNumber + "] locking: " + this.mainDbItem);
-                this.mainDbItem.lock();
 
-                System.out.println("\t\t > [T" + this.transactionNumber + "] locking: " + this.secondaryDbItem);
-                this.secondaryDbItem.lock();
+                System.out.println("\t\t > [T" + this.transactionId + "] locking: " + this.mainDbItem.getPosition());
+                this.mainDbItem.read_lock(this);
 
-                System.out.println("\t\t > [T" + this.transactionNumber + "] trying acess item: " + this.mainDbItem);
+                System.out.println("\t\t > [T" + this.transactionId + "] locking: " + this.secondaryDbItem.getPosition());
+                this.secondaryDbItem.read_lock(this);
+
+                System.out.println("\t\t > [T" + this.transactionId + "] trying acess item: " + this.mainDbItem.getPosition());
                 synchronized (mainDbItem) {
-                    System.out.println("\t\t > [T" + this.transactionNumber + "] reading item: " + this.mainDbItem);
-                    System.out.println("\t\t > [T" + this.transactionNumber + "] processing");
+                    System.out.println("\t\t > [T" + this.transactionId+ "] reading content on: " + this.mainDbItem.getPosition());
+                    System.out.println("\t\t > [T" + this.transactionId + "] current content: " + this.mainDbItem.read(this) );
+                    System.out.println("\t\t > [T" +this.transactionId + "] processing");
+
                     Thread.sleep(500);
-                    System.out.println("\t\t > [T" + this.transactionNumber + "] writting item: " + this.mainDbItem);
+                    System.out.println("\t\t > [T" + this.transactionId + "] writting on: " + this.mainDbItem.getPosition());
+                    this.mainDbItem.write(this, "outroAluno A");
+                    System.out.println("\t\t > [T" + this.transactionId + "] new content: " + this.mainDbItem.read(this) );
 
-                    System.out.println("\t\t > [T" + this.transactionNumber + "] trying acess item: " + this.secondaryDbItem);
+                    System.out.println("\t\t > [T" + this.transactionId + "] trying acess item: " + this.secondaryDbItem.getPosition());
+
                     synchronized (secondaryDbItem) {
-                        System.out.println("\t\t > [T" + this.transactionNumber + "] reading item: " + this.secondaryDbItem);
-                        System.out.println("\t\t > [T" + this.transactionNumber + "] processing");
-                        Thread.sleep(500);
-                        System.out.println("\t\t > [T" + this.transactionNumber + "] writting item: " + this.secondaryDbItem);
-                    }
-                    System.out.println("\t\t > [T" + this.transactionNumber + "] unlocking: " + this.mainDbItem);
-                    this.mainDbItem.unLock();
+                        System.out.println("\t\t > [T" + this.transactionId + "] reading content on: " + this.secondaryDbItem.getPosition());
+                        System.out.println("\t\t > [T" + this.transactionId + "] current content: " + this.secondaryDbItem.read(this) );
+                        System.out.println("\t\t > [T" + this.transactionId + "] processing");
 
-                    System.out.println("\t\t > [T" + this.transactionNumber + "] unlocking: " + this.secondaryDbItem);
-                    this.secondaryDbItem.unLock();
+                        Thread.sleep(500);
+                        System.out.println("\t\t > [T" + this.transactionId + "] writting on: " + this.secondaryDbItem.getPosition());
+                        this.secondaryDbItem.write(this, "outroAluno B");
+                        System.out.println("\t\t > [T" + this.transactionId + "] new content: " + this.secondaryDbItem.read(this) );
+                    }
+
+                    System.out.println("\t\t > [T" + this.transactionId+ "] unlocking: " + this.mainDbItem.getPosition());
+                    this.mainDbItem.unLock(this);
+
+                    System.out.println("\t\t > [T" + this.transactionId + "] unlocking: " + this.secondaryDbItem.getPosition());
+                    this.secondaryDbItem.unLock(this);
                 }
-                System.out.println("\t <- Transaction " + this.transactionNumber + " finished (" + LocalDateTime.now() + ")");
+                System.out.println("\t <- Transaction " + this.transactionId + " finished (" + LocalDateTime.now() + ")");
             }else{
-                System.out.println("\t <- [T" + this.transactionNumber + "] Ops! Locked item. Waiting for trying again(" + LocalDateTime.now() + ")");
+                System.out.println("\t <- [T" + this.transactionId + "] Ops! Locked item. Waiting for try execute again(" + LocalDateTime.now() + ")");
                 Thread.sleep(2000);
-                System.out.println("\t -> [T" + this.transactionNumber + "] Ops! trying execute again(" + LocalDateTime.now() + ")");
                 run();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public long getId() {
+        return this.transactionId;
     }
 }
