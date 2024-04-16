@@ -2,23 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b418298-04bf-4981-b7f1-6eee50521eb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/INF010-repo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/DeadlockPrevention.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/src/database/DataBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/src/database/DbItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/src/database/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/src/transactions/DeadlockTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DeadlockPrevention/src/transactions/NoDeadlockTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/pdf/DataBase.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/pdf/DbItem.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/pdf/DeadlockTransaction.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/pdf/Item.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/pdf/NoDeadlockTransaction.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/pdf/SGBD.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/pdf/Transaction.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/txt/DataBase.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/txt/DbItem.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/txt/DeadlockTransaction.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/txt/Item.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/txt/NoDeadlockTransaction.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/txt/SGBD.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeadlockPrevention.pdf/txt/Transaction.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/database/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/database/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/database/DbItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/database/DbItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/database/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/database/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/transactions/DeadlockTransaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/transactions/DeadlockTransaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/transactions/NoDeadlockTransaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeadlockPrevention/out/production/DeadlockPrevention/transactions/NoDeadlockTransaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeadlockPrevention/src/transactions/NoDeadlockTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeadlockPrevention/src/transactions/NoDeadlockTransaction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +86,8 @@
       <workItem from="1711919274705" duration="12000" />
       <workItem from="1711942203960" duration="75000" />
       <workItem from="1711942293524" duration="12000" />
+      <workItem from="1712366910431" duration="24000" />
+      <workItem from="1712449148883" duration="245000" />
     </task>
     <servers />
   </component>
