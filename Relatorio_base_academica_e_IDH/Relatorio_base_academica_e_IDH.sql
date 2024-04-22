@@ -1,5 +1,12 @@
 -- Para a base de dados IDH:
 -- 1 - Municípios que não pertencem a região norte
+	SELECT m.nomemunicipio, m.codmunicipio, e.nomeestado, e.siglaestado, e.codestado, r.nomeregiao, r.codregiao
+			FROM municipio m
+				JOIN estado e
+					on m.codestado = e.codestado
+				JOIN regiao r
+					on e.codregiao = r.codregiao
+			WHERE UPPER(r.nomeregiao) NOT LIKE UPPER('Norte')
 
 -- 2 - Municípios que possuem o mesmo nome
 
